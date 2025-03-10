@@ -1,11 +1,13 @@
 "use client";
 
+import type React from "react";
+import { useRef, useState, type FormEvent, type ChangeEvent } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "react-hot-toast";
+
 import {
   AnimatedSection,
   fadeIn,
@@ -15,29 +17,41 @@ import {
   AnimatedItem,
 } from "../framer-motion-utils";
 
-export default function ContactPage() {
-  const formRef = useRef(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+// Define the type for form data
+interface FormData {
+  user_name: string;
+  user_email: string;
+  user_phone: string;
+  message: string;
+}
 
-  // Pridané useState pre formular
-  const [formData, setFormData] = useState({
+const ContactPage: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  // State for form data
+  const [formData, setFormData] = useState<FormData>({
     user_name: "",
     user_email: "",
     user_phone: "",
     message: "",
   });
 
-  // Funkcia na aktualizáciu stavu formulára
-  const handleInputChange = (e) => {
+  // Function to update form state - with added console logging for debugging
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
+    console.log(`Input changed: ${name} = ${value}`); // Debug log
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Form submitted with data:", formData); // Debug log
     setIsSubmitting(true);
 
     const serviceId = "service_ru7u6t4";
@@ -48,7 +62,7 @@ export default function ContactPage() {
     const loadingToast = toast.loading("Odosielanie správy...");
 
     emailjs
-      .sendForm(serviceId, templateId, formRef.current, publicKey)
+      .sendForm(serviceId, templateId, formRef.current!, publicKey)
       .then((result) => {
         console.log("Email sent successfully:", result.text);
         // Dismiss loading toast and show success toast
@@ -86,7 +100,6 @@ export default function ContactPage() {
         />
       </Helmet>
 
-      {/* Toast container */}
       <Toaster
         position="top-right"
         toastOptions={{
@@ -110,16 +123,16 @@ export default function ContactPage() {
         }}
       />
 
-      <div className="container mx-auto px-6 py-12">
+      <div className=" mx-auto px-6 py-12">
         <AnimatedSection variants={fadeIn}>
           <h1 className="text-4xl font-light text-center mb-16">
             Kontaktujte <span className="logo-gradient font-bold">Nás</span>
           </h1>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className=" ">
           <StaggerContainer
-            className="space-y-8"
+            className="space-y-8 flex flex-wrap gap-10 flex-row justify-center items-center"
             delayChildren={0.2}
             staggerDelay={0.2}
           >
@@ -145,6 +158,7 @@ export default function ContactPage() {
                       aetherforgeagency@gmail.com
                     </span>
                   </motion.div>
+
                   <motion.div
                     className="flex items-center space-x-4 group"
                     whileHover={{ x: 5 }}
@@ -157,8 +171,9 @@ export default function ContactPage() {
                     >
                       <Phone className="text-coral h-5 w-5" />
                     </motion.div>
-                    <span className="text-gray-300">+421 949 533 151</span>
+                    <span className="text-gray-300">+421 944 000 000</span>
                   </motion.div>
+
                   <motion.div
                     className="flex items-center space-x-4 group"
                     whileHover={{ x: 5 }}
@@ -171,8 +186,9 @@ export default function ContactPage() {
                     >
                       <MapPin className="text-coral h-5 w-5" />
                     </motion.div>
-                    <span className="text-gray-300">Košice</span>
+                    <span className="text-gray-300">Bratislava, Slovensko</span>
                   </motion.div>
+
                   <motion.div
                     className="flex items-center space-x-4 group"
                     whileHover={{ x: 5 }}
@@ -186,107 +202,104 @@ export default function ContactPage() {
                       <Clock className="text-coral h-5 w-5" />
                     </motion.div>
                     <span className="text-gray-300">
-                      Pondelok až Piatok: 8:00 - 18:00
+                      Pondelok - Piatok: 9:00 - 17:00
                     </span>
                   </motion.div>
                 </div>
               </div>
             </AnimatedItem>
 
-            <AnimatedItem variants={fadeInLeft}>
-              <div className="relative rounded-xl overflow-hidden shadow-xl">
-                <motion.img
-                  src="https://media.discordapp.net/attachments/1060490975421669376/1346188452189966397/11.jpg?ex=67c74731&is=67c5f5b1&hm=b820d9c872abb0e072c4c57e5eb805f79898da5bd2adaae84233fabaaee645de&=&format=webp&width=705&height=469"
-                  alt="Centrum Pokročilých Technológií"
-                  className="w-full h-[300px] object-cover rounded-xl"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.7 }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-darker to-transparent"></div>
+            <AnimatedItem variants={fadeInRight}>
+              <div className="bg-dark/50 p-8 rounded-xl border border-gold/10">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Celé Meno
+                      </label>
+                      <input
+                        type="text"
+                        name="user_name"
+                        className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-black transition-all"
+                        placeholder="Ján Novák"
+                        required
+                        value={formData.user_name}
+                        onChange={handleInputChange}
+                        style={{ zIndex: 10, position: "relative" }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="user_email"
+                        className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-black transition-all"
+                        placeholder="jan@priklad.sk"
+                        required
+                        value={formData.user_email}
+                        onChange={handleInputChange}
+                        style={{ zIndex: 10, position: "relative" }}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Telefónne Číslo
+                    </label>
+                    <input
+                      type="tel"
+                      name="user_phone"
+                      className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-black transition-all"
+                      placeholder="+421 XXX XXX XXX"
+                      value={formData.user_phone}
+                      onChange={handleInputChange}
+                      style={{ zIndex: 10, position: "relative" }}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Správa
+                    </label>
+                    <textarea
+                      name="message"
+                      className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-black transition-all"
+                      rows={6}
+                      placeholder="Povedzte nám o vašom projekte"
+                      required
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      style={{ zIndex: 10, position: "relative" }}
+                    ></textarea>
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    className="w-full btn-gradient py-4 rounded-lg flex items-center justify-center space-x-2 text-lg font-medium"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.3 }}
+                    disabled={isSubmitting}
+                  >
+                    <span>
+                      {isSubmitting ? "Odosielanie..." : "Odoslať Správu"}
+                    </span>
+                  </motion.button>
+                </form>
               </div>
             </AnimatedItem>
           </StaggerContainer>
-
-          <AnimatedSection variants={fadeInRight}>
-            <div className="bg-dark/50 p-8 rounded-xl border border-gold/10">
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Celé Meno
-                    </label>
-                    <input
-                      type="text"
-                      name="user_name"
-                      className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-white transition-all"
-                      placeholder="Ján Novák"
-                      required
-                      value={formData.user_name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="user_email"
-                      className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-white transition-all"
-                      placeholder="jan@priklad.sk"
-                      required
-                      value={formData.user_email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Telefónne Číslo
-                  </label>
-                  <input
-                    type="tel"
-                    name="user_phone"
-                    className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-white transition-all"
-                    placeholder="+421 XXX XXX XXX"
-                    value={formData.user_phone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Správa
-                  </label>
-                  <textarea
-                    name="message"
-                    className="w-full px-4 py-3 bg-darker/50 border border-gold/20 rounded-lg focus:ring-2 focus:ring-gold/50 focus:border-gold text-white transition-all"
-                    rows={6}
-                    placeholder="Povedzte nám o vašom projekte"
-                    required
-                    value={formData.message}
-                    onChange={handleInputChange}
-                  ></textarea>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  className="w-full btn-gradient py-4 rounded-lg flex items-center justify-center space-x-2 text-lg font-medium"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  disabled={isSubmitting}
-                >
-                  <span>
-                    {isSubmitting ? "Odosielanie..." : "Odoslať Správu"}
-                  </span>
-                </motion.button>
-              </form>
-            </div>
-          </AnimatedSection>
         </div>
       </div>
     </>
   );
-}
+};
+
+export default ContactPage;
