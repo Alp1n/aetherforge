@@ -104,7 +104,7 @@ export default function HomePage() {
               <AnimatedSection variants={fadeInLeft}>
                 <div className="relative overflow-hidden rounded-2xl">
                   <motion.img
-                    src="src/obrazky/2.jpg"
+                    src="public/2.jpg"
                     alt="Pokročilá Technológia"
                     className="rounded-2xl shadow-2xl"
                     whileHover={{ scale: 1.1 }}

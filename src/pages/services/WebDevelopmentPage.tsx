@@ -38,7 +38,7 @@ export default function WebDevelopmentPage() {
           <AnimatedSection variants={fadeInLeft}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="../src/obrazky/3.jpg"
+                src="../public/3.jpg"
                 alt="Vývoj Webu"
                 className="w-full h-[400px] object-cover"
                 whileHover={{ scale: 1.05 }}

@@ -47,7 +47,7 @@ export default function AIAssistantsPage() {
           <AnimatedSection variants={fadeInLeft}>
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                src="../src/obrazky/7.jpg"
+                src="../public/7.jpg"
                 alt="Vizualizácia AI Asistenta"
                 className="w-full h-[400px] object-cover"
               />
@@ -55,7 +55,11 @@ export default function AIAssistantsPage() {
             </div>
           </AnimatedSection>
 
-          <StaggerContainer className="flex gap-4 flex-col" delayChildren={0.2} staggerDelay={0.2}>
+          <StaggerContainer
+            className="flex gap-4 flex-col"
+            delayChildren={0.2}
+            staggerDelay={0.2}
+          >
             <AnimatedItem variants={fadeInRight}>
               <div className="feature-card p-6 rounded-xl">
                 <div className="flex items-start space-x-4">

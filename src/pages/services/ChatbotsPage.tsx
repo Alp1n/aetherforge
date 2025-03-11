@@ -138,7 +138,7 @@ export default function ChatbotsPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="../src/obrazky/4.jpg"
+                src="../public/4.jpg"
                 alt="Rozhranie Chatbota"
                 className="w-full h-[630px] object-cover"
                 whileHover={{ scale: 1.05 }}
