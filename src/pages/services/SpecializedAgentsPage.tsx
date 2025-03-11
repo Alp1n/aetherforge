@@ -139,7 +139,7 @@ export default function SpecializedAgentsPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="../public/1.jpeg"
+                src="/1.jpeg"
                 alt="Rozhranie AI Agentov"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}

@@ -113,7 +113,7 @@ export default function AutomationPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="../public/6.jpg"
+                src="/6.jpg"
                 alt="Automatizácia Procesov"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
