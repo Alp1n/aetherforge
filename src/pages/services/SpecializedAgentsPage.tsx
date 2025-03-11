@@ -139,7 +139,7 @@ export default function SpecializedAgentsPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="https://media.discordapp.net/attachments/1060490975421669376/1346185753385762896/7.jpg?ex=67c744ae&is=67c5f32e&hm=e2a520a784dd32bf50932b12985814aec52a62edd00e8040376ed4e394675790&=&format=webp&width=441&height=663"
+                src="../src/obrazky/1.jpeg"
                 alt="Rozhranie AI Agentov"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}

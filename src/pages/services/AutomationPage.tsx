@@ -1,6 +1,13 @@
 "use client";
 import { Helmet } from "react-helmet-async";
-import { Mail, Cpu, FileText, Zap, Bot, BarChart3 } from "lucide-react";
+import {
+  MessageSquare,
+  Brain,
+  Database,
+  RefreshCcw,
+  Users,
+  Zap,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import {
   AnimatedSection,
@@ -11,27 +18,25 @@ import {
   AnimatedItem,
 } from "../../framer-motion-utils";
 
-export default function AutomationPage() {
+export default function ChatbotsPage() {
   return (
     <>
       <Helmet>
-        <title>Automatizácia Procesov - AetherForge</title>
+        <title>Vývoj AI Chatbotov - AetherForge</title>
         <meta
           name="description"
-          content="Implementujeme inteligentné automatizačné riešenia pomocou AI pre e-mailový marketing, technické úlohy a spracovanie dokumentov."
+          content="Vytvorte inteligentných chatbotov, ktorí rozumejú kontextu, učia sa z interakcií a poskytujú cennú pomoc vašim používateľom."
         />
       </Helmet>
 
       <div className="container mx-auto px-6 py-12">
         <AnimatedSection variants={fadeIn}>
           <h1 className="text-4xl font-light mb-4">
-            Automatizácia{" "}
-            <span className="logo-gradient font-bold">Procesov</span>
+            Vývoj <span className="logo-gradient font-bold">AI Chatbotov</span>
           </h1>
           <p className="text-gray-300 mb-12 max-w-2xl">
-            Implementujeme inteligentné automatizačné riešenia, ktoré šetria
-            čas, znižujú manuálnu prácu a optimalizujú využitie zdrojov vašej
-            organizácie.
+            Vytvárame inteligentných chatbotov, ktorí rozumejú kontextu, učia sa
+            z interakcií a poskytujú hodnotnú asistenciu vašim používateľom.
           </p>
         </AnimatedSection>
 
@@ -39,7 +44,7 @@ export default function AutomationPage() {
           <StaggerContainer
             className="space-y-8"
             delayChildren={0.2}
-            staggerDelay={0.2}
+            staggerDelay={0.15}
           >
             <AnimatedItem variants={fadeInLeft}>
               <div className="feature-card p-6 rounded-xl">
@@ -48,15 +53,15 @@ export default function AutomationPage() {
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Mail className="h-8 w-8 text-gold" />
+                    <MessageSquare className="h-8 w-8 text-gold" />
                   </motion.div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-gold">
-                      Automatizácia E-mailového Marketingu
+                      Prirodzené Konverzácie
                     </h3>
                     <p className="text-gray-300">
-                      Využívame AI na personalizáciu a automatizáciu e-mailových
-                      kampaní, čím zvyšujeme ich efektivitu a konverzný pomer.
+                      Pokročilé spracovanie jazyka pre prirodzené interakcie a
+                      porozumenie.
                     </p>
                   </div>
                 </div>
@@ -70,16 +75,15 @@ export default function AutomationPage() {
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Cpu className="h-8 w-8 text-gold" />
+                    <Database className="h-8 w-8 text-gold" />
                   </motion.div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-gold">
-                      Automatizácia Technických Úloh
+                      Vlastná Znalostná Báza
                     </h3>
                     <p className="text-gray-300">
-                      Implementujeme AI riešenia na automatizáciu technických
-                      úloh vo firme, čím šetríme čas a znižujeme potrebu
-                      manuálnej práce.
+                      Tréning chatbota so špecifickými informáciami o vašich
+                      produktoch, službách a postupoch.
                     </p>
                   </div>
                 </div>
@@ -93,16 +97,37 @@ export default function AutomationPage() {
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <FileText className="h-8 w-8 text-gold" />
+                    <Brain className="h-8 w-8 text-gold" />
                   </motion.div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-gold">
-                      Inteligentné Spracovanie Dokumentov
+                      Kontextové Odpovede
                     </h3>
                     <p className="text-gray-300">
-                      Transformujeme manuálne spracovanie dokumentov na
-                      automatizovaný proces pomocou AI, čo zvyšuje efektivitu a
-                      presnosť v podnikových operáciách.
+                      Prispôsobenie odpovedí na základe typu používateľa,
+                      kontextu a histórie konverzácie.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedItem>
+
+            <AnimatedItem variants={fadeInLeft}>
+              <div className="feature-card p-6 rounded-xl">
+                <div className="flex items-start space-x-4">
+                  <motion.div
+                    whileHover={{ rotate: 15, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <RefreshCcw className="h-8 w-8 text-gold" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-gold">
+                      Neustále Učenie
+                    </h3>
+                    <p className="text-gray-300">
+                      Zlepšovanie odpovedí v priebehu času na základe interakcií
+                      a spätnej väzby.
                     </p>
                   </div>
                 </div>
@@ -113,9 +138,9 @@ export default function AutomationPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="https://media.discordapp.net/attachments/1060490975421669376/1346186429398519868/9.jpg?ex=67c7454f&is=67c5f3cf&hm=87e36b2397e763491bc86e9aa303d3d763bf8c52145cd87774200f942b010ea2&=&format=webp&width=919&height=613"
-                alt="Automatizácia Procesov"
-                className="w-full h-full object-cover"
+                src="../src/obrazky/4.jpg"
+                alt="Rozhranie Chatbota"
+                className="w-full h-[630px] object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.5 }}
               />
@@ -127,10 +152,30 @@ export default function AutomationPage() {
         <AnimatedSection>
           <div className="bg-dark/50 rounded-2xl p-8">
             <h2 className="text-3xl font-light mb-8">
-              Výhody{" "}
-              <span className="logo-gradient font-bold">Automatizácie</span>
+              Možnosti{" "}
+              <span className="logo-gradient font-bold">Integrácie</span>
             </h2>
-            <StaggerContainer className="grid md:grid-cols-3 gap-8">
+            <StaggerContainer className="grid md:grid-cols-2 gap-8">
+              <AnimatedItem>
+                <div className="text-center">
+                  <motion.div
+                    className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4"
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: "rgba(255, 215, 0, 0.2)",
+                    }}
+                  >
+                    <Users className="h-8 w-8 text-gold" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold mb-2">
+                    Multiplatformová Podpora
+                  </h3>
+                  <p className="text-gray-300">
+                    Nasadenie chatbota na webstránky, komunikačné aplikácie a
+                    sociálne siete.
+                  </p>
+                </div>
+              </AnimatedItem>
               <AnimatedItem>
                 <div className="text-center">
                   <motion.div
@@ -142,47 +187,9 @@ export default function AutomationPage() {
                   >
                     <Zap className="h-8 w-8 text-gold" />
                   </motion.div>
-                  <h3 className="text-xl font-bold mb-2">Úspora Času</h3>
+                  <h3 className="text-xl font-bold mb-2">API Integrácia</h3>
                   <p className="text-gray-300">
-                    Automatizácia rutinných úloh výrazne znižuje čas potrebný na
-                    ich vykonanie a uvoľňuje zdroje pre strategické aktivity.
-                  </p>
-                </div>
-              </AnimatedItem>
-              <AnimatedItem>
-                <div className="text-center">
-                  <motion.div
-                    className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4"
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(255, 215, 0, 0.2)",
-                    }}
-                  >
-                    <Bot className="h-8 w-8 text-gold" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold mb-2">Vyššia Presnosť</h3>
-                  <p className="text-gray-300">
-                    AI-poháňané procesy minimalizujú ľudské chyby a zabezpečujú
-                    konzistentné, spoľahlivé výsledky.
-                  </p>
-                </div>
-              </AnimatedItem>
-              <AnimatedItem>
-                <div className="text-center">
-                  <motion.div
-                    className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4"
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(255, 215, 0, 0.2)",
-                    }}
-                  >
-                    <BarChart3 className="h-8 w-8 text-gold" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold mb-2">Škálovateľnosť</h3>
-                  <p className="text-gray-300">
-                    Automatizované procesy sa ľahko škálujú s rastom vášho
-                    podnikania bez potreby proporcionálneho nárastu pracovnej
-                    sily.
+                    Prepojenie chatbota s existujúcimi systémami a databázami.
                   </p>
                 </div>
               </AnimatedItem>

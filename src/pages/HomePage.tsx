@@ -29,7 +29,7 @@ export default function HomePage() {
             <img
               src="https://images.unsplash.com/photo-1451187580459-43490279c0fa"
               alt="Zem z vesmíru"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover brightness-50"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-darker/95 via-darker/80 to-darker/60"></div>
           </div>
@@ -104,7 +104,7 @@ export default function HomePage() {
               <AnimatedSection variants={fadeInLeft}>
                 <div className="relative overflow-hidden rounded-2xl">
                   <motion.img
-                    src="https://media.discordapp.net/attachments/1060490975421669376/1346183651720695868/3.jpg?ex=67c742b9&is=67c5f139&hm=6525a42aa10904732ef7dc64892929c76badf7d67c23ba02834fcc292ed4e0ee&=&format=webp&width=663&height=663"
+                    src="src/obrazky/2.jpg"
                     alt="Pokročilá Technológia"
                     className="rounded-2xl shadow-2xl"
                     whileHover={{ scale: 1.1 }}

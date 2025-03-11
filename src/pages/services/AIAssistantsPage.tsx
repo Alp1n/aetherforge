@@ -47,7 +47,7 @@ export default function AIAssistantsPage() {
           <AnimatedSection variants={fadeInLeft}>
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                src="https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&q=80&w=1000"
+                src="../src/obrazky/7.jpg"
                 alt="Vizualizácia AI Asistenta"
                 className="w-full h-[400px] object-cover"
               />

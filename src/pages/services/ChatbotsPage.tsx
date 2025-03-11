@@ -138,7 +138,7 @@ export default function ChatbotsPage() {
           <AnimatedSection variants={fadeInRight}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="https://media.discordapp.net/attachments/1060490975421669376/1346184659129860146/6.jpg?ex=67c743a9&is=67c5f229&hm=c624395101820fdb17a9495896e2790740dad1455e496107734979315a12029f&=&format=webp&width=371&height=661"
+                src="../src/obrazky/4.jpg"
                 alt="Rozhranie Chatbota"
                 className="w-full h-[630px] object-cover"
                 whileHover={{ scale: 1.05 }}

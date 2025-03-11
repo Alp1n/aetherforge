@@ -38,7 +38,7 @@ export default function WebDevelopmentPage() {
           <AnimatedSection variants={fadeInLeft}>
             <div className="relative overflow-hidden rounded-2xl">
               <motion.img
-                src="https://cdn.discordapp.com/attachments/1060490975421669376/1346184287824908428/5.jpg?ex=67c74351&is=67c5f1d1&hm=dcd52cf084dfce2ce2ab5513886a4b5319e6cc8c2492d7380465f18d1e4613e6&"
+                src="../src/obrazky/3.jpg"
                 alt="Vývoj Webu"
                 className="w-full h-[400px] object-cover"
                 whileHover={{ scale: 1.05 }}
