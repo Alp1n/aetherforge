@@ -171,7 +171,7 @@ const ContactPage: React.FC = () => {
                     >
                       <Phone className="text-coral h-5 w-5" />
                     </motion.div>
-                    <span className="text-gray-300">+421 944 000 000</span>
+                    <span className="text-gray-300">+421 949 533 151</span>
                   </motion.div>
 
                   <motion.div
@@ -186,7 +186,7 @@ const ContactPage: React.FC = () => {
                     >
                       <MapPin className="text-coral h-5 w-5" />
                     </motion.div>
-                    <span className="text-gray-300">Bratislava, Slovensko</span>
+                    <span className="text-gray-300">Košice, Slovensko</span>
                   </motion.div>
 
                   <motion.div
